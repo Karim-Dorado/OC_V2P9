@@ -40,7 +40,7 @@ Sous Windows :
     $ cd LITReview/
     $ py manage.py runserver
 
-Le site sera accéssible via l'adresse local : 127.0.0.1:8000
+Le site sera accessible via l'adresse local : 127.0.0.1:8000
 
 
 Il existe 3 utilisateurs crées : "Toto", "Tata" et "Tutu". 
