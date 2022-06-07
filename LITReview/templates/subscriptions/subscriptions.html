@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% block content %}
+<section class="subscription">
+    <h2>Suivre d'autres utilisateurs</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="forms">
+            <div>{{ form }}</div>
+            <button class="suscribe" type="submit" id="suivre" value="Suivre">Suivre</button>
+        </div> 
+    </form>
+    <h2>Abonnements</h2>
+    {% for user in user_follows %}
+    <ul>
+            {% if  user.user == current_user %}
+                <li class="subscriber_list">{{ user.followed_user }} <a href= {% url 'unsuscribe' user.pk %}> Désabonner</a> </li>
+            {% endif %}
+    </ul>    
+        {% empty %}
+            <p>Personne de suivi</p> 
+        {% endfor %}
+    <h2>Abonnés</h2>
+    {% for subscriber in subscribers %}
+    <ul>
+        <li>{{ subscriber.user }}</li>
+    </ul>
+        {% empty %}
+            <p>Pas d'abonné</p>
+</section>
+        {% endfor %}
+{% endblock content %}

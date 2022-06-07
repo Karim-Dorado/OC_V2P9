@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block content %}
+<section class="unsuscribe">
+    <h2>Supprimer un utilisateur</h2>
+    <p>Voulez-vous vous désabonner de {{ object.followed_user.username }}?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button id="unsuscribe-btn" type="submit" value="Se désabonner">Se désabonner</button>
+    </form>
+</section>
+{% endblock content %}

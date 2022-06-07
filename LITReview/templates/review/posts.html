@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% block content %}
+    <h2>Vos tickets</h2>
+    <div class="posts">
+    {% for ticket in tickets %}
+        <section class="ticket">
+            <div class="author">Vous avez créé un ticket</div>
+            <div>{{ ticket.time_created }}</div>
+            <h3 class="title">{{ ticket.title }}</h3>
+            <p class="description">{{ ticket.description }}</p>
+            {% if ticket.image %}
+                <img class="image" src="{{ ticket.image.url }}">
+            {% endif %}    
+            <strong><a class="btn" href="{% url 'ticket-update' ticket.pk %}">Modifier</a></strong>
+            <strong><a class="btn" href="{% url 'ticket-delete' ticket.pk %}">Supprimer</a></strong>
+        </section>
+    {% endfor %}
+    </div>
+    <h2>Vos Critiques</h2>
+    <div class="posts">
+    {% for review in reviews %}
+        <section class="review">
+                <div class="author">Vous avez publié une critique</div>
+                <div class="time">{{ review.time_created }}</div>
+                <h3>{{ review.headline }}</h3>
+                {% if review.rating == 5 %}
+                    <span>Note: ★★★★★</span>
+                {% elif review.rating == 4 %}
+                    <span>Note: ★★★★☆</span>
+                {% elif review.rating == 3 %}
+                    <span>Note: ★★★☆☆</span>
+                {% elif review.rating == 2 %}
+                    <span>Note: ★★☆☆☆</span>
+                {% elif review.rating == 1 %}
+                    <span>Note: ★☆☆☆☆</span>
+                {% else %}
+                    <span>Note: ☆☆☆☆☆</span>
+                {% endif %}
+                <div>{{ review.body }}</div></p>
+                <h3 class="title">{{ review.ticket.title }}</h3>
+                <p class="description">{{ review.ticket.description }}</p>
+                <img class="image" src="{{ review.ticket.image.url }}">
+                <strong><a class="btn" href="{% url 'review-update' review.pk %}">Modifier</a></strong>
+                <strong><a class="btn" href="{% url 'review-delete' review.pk %}">Supprimer</a></strong>
+        </section>
+    {% endfor %}
+    </div>
+     
+{% endblock content%}

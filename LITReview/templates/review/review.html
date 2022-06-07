@@ -1,0 +1,29 @@
+<section class="review">
+    {% if  post.user.id == user.id%}
+        <div class="author">Vous avez publié une critique</div>
+    {% else %}
+        <div class="author">{{ post.user.username }} a publié une critique</div>
+    {% endif %}
+        <div class="time">{{ post.time_created }}</div>
+        <hr>
+        <div>Ticket créé par {{ post.user.username }}</div>
+        <h3 class="title">{{ post.ticket.title }}</h3>
+        <p class="description">{{ post.ticket.description }}</p>
+        <img class="image" src="{{ post.ticket.image.url }}">
+        <hr>
+        <h3>{{ post.headline }}</h3>
+        {% if post.rating == 5 %}
+            <span>Note: ★★★★★</span>
+        {% elif post.rating == 4 %}
+            <span>Note: ★★★★☆</span>
+        {% elif post.rating == 3 %}
+            <span>Note: ★★★☆☆</span>
+        {% elif post.rating == 2 %}
+            <span>Note: ★★☆☆☆</span>
+        {% elif post.rating == 1 %}
+            <span>Note: ★☆☆☆☆</span>
+        {% else %}
+            <span>Note: ☆☆☆☆☆</span>
+        {% endif %}
+        <div>{{ post.body }}</div>
+</section>

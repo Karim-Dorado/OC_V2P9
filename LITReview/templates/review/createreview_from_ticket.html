@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="create-review">
+        <h2>Créer une critique</h2>
+        <p>Vous postez une critique en réponse à: {{ ticket.user.username }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                    <h3 class="title">{{ ticket.title }}</h3>
+                    <p class="description">{{ ticket.description }}</p>
+                    <img class="image" src="{{ ticket.image.url }}">
+                <div class="forms">
+                    {{ form_review.as_p }}
+                    <input type="submit" value="Envoyer">
+                </div>
+            </form>
+    </div>
+{% endblock content%}

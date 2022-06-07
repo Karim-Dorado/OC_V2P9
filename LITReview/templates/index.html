@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/style.css' %}" />
+    {% if title%}
+        <title>LITReview | {{ title }}</title>
+    {% else %}
+        <title>LITReview</title>
+    {% endif %} 
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="logo">LITReview</li>
+                <li class="item"><a href="/flux">{{user.username.upper}}</a></li>
+                <li class="item"><a href="/flux">Flux</a></li>
+                <li class="item"><a href="/posts">Posts</a></li>
+                <li class="item"><a href="/subscriptions">Abonnements</a></li>
+                <li class="item"><a href="/login">Déconnexion</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% else %}
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="logo">LITReview</li>
+            </ul>
+        </nav>
+    </header>
+    {% endif %}
+
+    <section class="main">
+    {% if messages %}
+        {% for message in messages %}
+        {{message}}
+        {% endfor %} 
+    {% endif %}
+    
+    {% block content %}
+    {% endblock content %}
+    </section> 
+
+</body>
+</html>

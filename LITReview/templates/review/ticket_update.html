@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block content %}
+<h2>Modifier un ticket</h2>
+<div class="posts">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form">
+            <p>Titre : {{ form.title }}</p>
+            <p>Description : {{ form.description }}</p>              
+            <p>Changer l'image : {{ form.image }}</p>
+            <div>
+                <button><a class="btn" type="submit">Envoyer</a></button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

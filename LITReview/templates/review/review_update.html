@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% block content %}
+    <h2>Modifier votre critique</h2>
+        <div class="create-review">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p>Vous êtes en train de poster la critique du post :
+                    <section class="ticket">
+                        <div class="ticket__usernameAndDate"></div>
+                        <div>{{review.ticket.user.username}}</div>
+                        <div>{{review.ticket.time_created}}</div>
+                        <h3 class="ticket__title">{{ review.ticket.title }}</h3>
+                        <p class="ticket__description">{{ review.ticket.description }}</p>
+                        <img class="ticket__image" src="{{ review.ticket.image.url }}">
+                    </section>
+                <section class="ticket">
+                    <div class="form">
+                        {{ form.as_p }}
+                        <button><a class="btn" type="submit">Envoyer</a></button>
+                    </div>
+                </section>
+            </form>
+        </div>
+{% endblock content %}

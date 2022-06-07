@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block content %}
+    <h2>Créer une critique</h2>
+        <div class="posts">       
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="forms">
+                    {{ form_ticket.as_p }}
+                    {{ form_review.as_p }}
+                    <button><a class="btn" type="submit">Envoyer</a></button>
+                </div>
+            </form>
+        </div>
+{% endblock content%}

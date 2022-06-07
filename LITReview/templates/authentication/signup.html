@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block content %}
+
+<section id="block__connection"> 
+    <div class="block__registration">
+        <h2>Inscription</h2>
+        <form action="/signup" method="post">
+            {% csrf_token %}
+                <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" Required>
+                <br>
+                <input type="text" id="fname" name="fname" placeholder="Prénom" Required>
+                <br>
+                <input type="text" id="lname" name="lname" placeholder="Nom" Required>
+                <br>
+                <input type="email" id="email" name="email" placeholder="Email" Required>
+                <br>
+                <input type="password" id="pass1" name="pass1" placeholder="Mot de Passe" Required>
+                <br>
+                <input type="password" id="pass2" name="pass2" placeholder="Confirmer Mot de Passe" Required>
+                <br>
+                <button type="submit">S'inscrire</button>
+            </form>
+    </div>
+</section>     
+{% endblock content %}

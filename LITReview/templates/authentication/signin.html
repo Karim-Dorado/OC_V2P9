@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block content %}
+
+<section id="block__connection"> 
+    <h2>Connectez-vous</h2>
+    <div class="block__registration"></div>
+    <form action="/signin" method="post">
+        {% csrf_token %}
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" Required>
+            <br>
+            <input type="password" id="pass1" name="pass1" placeholder="Mot de Passe" Required>
+            <br>
+            <button type="submit" id="submit">Se connecter</button>
+        </form>
+    </div>
+</section>     
+{% endblock content %}

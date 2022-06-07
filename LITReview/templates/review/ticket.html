@@ -1,0 +1,19 @@
+<section class="ticket">
+    {% if  post.user.id == user.id%}
+        <div class="author">Vous avez créé un ticket</div>
+        <div class="time">{{ post.time_created }}</div>
+    {% else %}
+        <div class="author"></div>
+        <div>{{ post.user.username }} a créé un ticket</div>
+        <div>{{ post.time_created }}</div>
+    {% endif %}
+    <hr>
+    <h3 class="title">{{ post.title }}</h3>
+    <p class="description">{{ post.description }}</p>
+    {% if post.image %}
+        <img class="image" src="{{ post.image.url }}">
+    {% endif %}
+    {% if not post.ticket %}
+        <button class="btn_ticket"><a class="btn" href="{% url 'create_review_from_ticket' id_ticket=post.pk %}">Commenter</a></button>
+    {% endif %}
+</section>
