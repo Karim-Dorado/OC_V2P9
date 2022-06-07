@@ -47,5 +47,6 @@ Il existe 3 utilisateurs crées : "Toto", "Tata" et "Tutu".
 Mot de passe : 123
 
 Vous pouvez vous connecter à l'interface d'administration via l'adresse suivante :  127.0.0.1:8000/admin
-utilisateur : admin
+
+Utilisateur : admin
 Mot de passe "admin123"
