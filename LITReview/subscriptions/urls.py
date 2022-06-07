@@ -1,7 +1,6 @@
 from django.urls import path
 from .views import SubscriptionDeleteView
-
-from. import views
+from . import views
 
 
 urlpatterns = [

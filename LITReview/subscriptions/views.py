@@ -4,7 +4,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 
@@ -34,8 +33,7 @@ def subscriptions(request):
                                                )
         except ValueError:
             form = SubscriptionsForm(request.POST)
-            messages.error(request, f'Vous ne pouvez pas vous suivre')
-                                                   
+            messages.error(request, 'Vous ne pouvez pas vous suivre')
         except Exception:
             form = SubscriptionsForm(request.POST)
             messages.error(request, "Cet utilisateur n'est pas répertorié")
@@ -54,11 +52,7 @@ def subscriptions(request):
                                                 })
 
 
-
-class SubscriptionDeleteView(LoginRequiredMixin,
-                             DeleteView,
-                             SuccessMessageMixin
-                             ):
+class SubscriptionDeleteView(LoginRequiredMixin, DeleteView, SuccessMessageMixin):
     model = UserFollows
     success_url = reverse_lazy('subscriptions')
     success_message = "Abonnement résilié"

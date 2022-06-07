@@ -3,12 +3,13 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
-# Create your views here.
+
 def home(request):
     if request.user.is_authenticated:
         return redirect('flux')
     else:
         return render(request, "authentication/login.html")
+
 
 def signup(request):
     if request.method == "POST":
@@ -17,7 +18,6 @@ def signup(request):
         lname = request.POST['lname']
         email = request.POST['email']
         pass1 = request.POST['pass1']
-        pass2 = request.POST['pass2']
 
         myuser = User.objects.create_user(username, email, pass1)
         myuser.first_name = fname
@@ -29,6 +29,7 @@ def signup(request):
         return redirect('signin')
     return render(request, "authentication/signup.html")
 
+
 def signin(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -38,7 +39,6 @@ def signin(request):
 
         if user is not None:
             login(request, user)
-            fname = user.first_name
             return redirect("home")
 
         else:
@@ -46,6 +46,7 @@ def signin(request):
             return redirect('home')
 
     return render(request, "authentication/signin.html")
+
 
 def signout(request):
     logout(request)

@@ -11,8 +11,9 @@
     <h3 class="title">{{ post.title }}</h3>
     <p class="description">{{ post.description }}</p>
     {% if post.image %}
-        <img class="image" src="{{ post.image.url }}">
+        <img class="image" src="{{ post.image.url }}"><p></p>
     {% endif %}
+    <hr>
     {% if not post.ticket %}
         <button class="btn_ticket"><a class="btn" href="{% url 'create_review_from_ticket' id_ticket=post.pk %}">Commenter</a></button>
     {% endif %}
